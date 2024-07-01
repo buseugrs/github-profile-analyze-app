@@ -1,9 +1,10 @@
-import React from 'react'
+import { configureStore } from "@reduxjs/toolkit";
+import githubReducer from "./features/githubSlice";
 
-const store = () => {
-  return (
-    <div>store</div>
-  )
-}
+const store = configureStore({
+  reducer: {
+    github: githubReducer,
+  },
+});
 
-export default store
+export default store;

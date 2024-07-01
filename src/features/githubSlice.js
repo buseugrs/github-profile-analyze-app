@@ -10,7 +10,9 @@ export const fetchUser = createAsyncThunk(
       `https://api.github.com/users/${username}`
     );
     const reposResponse = await axios.get(userResponse.data.repos_url);
+    console.log(userResponse.data, reposResponse.data  );
     return { user: userResponse.data, repos: reposResponse.data };
+
   }
 );
 
@@ -23,23 +25,25 @@ const githubSlice = createSlice({
     error: null,
   },
   reducers: {}, // defining actions
-  extraReducers: {
-    [fetchUser.pending]: (state) => {
-      // state update for fetchUser.pending status
-      state.loading = true;
-      state.error = null;
-    },
-    [fetchUser.fulfilled]: (state, action) => {
-      // state update for fetchUser.fulfilled status
-      state.loading = false;
-      state.user = action.payload.user;
-      state.repos = action.payload.repos;
-    },
-    [fetchUser.rejected]: (state, action) => {
-      // state update for fetchUser.rejected status
-      state.loading = false;
-      state.error = action.error.message;
-    },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUser.pending, (state) => {
+        // state update for fetchUser.pending status
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        // state update for fetchUser.fulfilled status
+        state.loading = false;
+        state.user = action.payload.user;
+        state.repos = action.payload.repos;
+      })
+      .addCase(fetchUser.rejected, (state, action) => {
+        // state update for fetchUser.rejected status
+        state.loading = false;
+        state.error = action.error.message;
+      });
   }, // specify how actions coming from async or other slices will be processed
 });
 

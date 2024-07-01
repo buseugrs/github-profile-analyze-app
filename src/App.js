@@ -6,6 +6,7 @@ import "./App.css";
 import SearchForm from "./components/SearchForm";
 import UserProfile from "./components/UserProfile";
 import RepoList from "./components/RepoList";
+import LanguagePieChart from "./components/LanguagePieChart";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <SearchForm />
         <UserProfile />
         <RepoList />
+        <LanguagePieChart/>
       </div>
     </Provider>
   );

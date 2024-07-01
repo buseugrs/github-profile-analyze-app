@@ -8,15 +8,15 @@ const RepoList = () => {
     <div>
       <h2>Repo List</h2>
       <ul>
-        {repos.map((repo) => {
+        {repos.map((repo) => (
           <li key={repo.id}>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
               {repo.name}
             </a>
             <p>Language: {repo.language}</p>
             <p>Stars: {repo.stargazers_count}</p>
-          </li>;
-        })}
+          </li>
+        ))}
       </ul>
     </div>
   );

@@ -2,7 +2,6 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { act } from "react";
 
 export const fetchUser = createAsyncThunk(
   "github/fetchUser", //sliceName/actionName-- action name
